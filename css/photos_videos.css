@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+.galerie {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 15px;
+  background-color: #222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tab:hover {
+  background-color: #444;
+}
+
+.tab.active {
+  background-color: #00ffff;
+  color: rgb(211, 6, 247);
+}
+
+.gallery-content {
+  display: none;
+}
+
+.gallery-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in;
+  margin-bottom: 40px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+.carousel img {
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  opacity: 0.3;
+  filter: blur(2px);
+  flex-shrink: 0;
+  transform: scale(0.8);
+  z-index: 1;
+}
+
+/* Image centrale mise en avant */
+.carousel img.active {
+  transform: scale(1.2);
+  opacity: 1;
+  filter: none;
+  z-index: 2;
+}
+
+/* Supprime complètement cet effet si tu ne veux plus de hover : */
+.carousel img:hover {
+  transform: none;
+  opacity: inherit;
+  filter: inherit;
+}
+
+/* Boutons de navigation */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: #fff;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Vidéos */
+.videos {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.videos iframe {
+  max-width: 100%;
+  width: 560px;
+  height: 315px;
+  border-radius: 10px;
+}

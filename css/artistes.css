@@ -1,14 +1,16 @@
 /* Import de la bonne police Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+/* Section principale */
 .artistes-section {
   padding: 40px 450px;
   background-color: black;
   color: white;
   text-align: center;
-  font-family: 'Montserrat', cursive !important;
+  font-family: 'Montserrat', sans-serif;
 }
 
+/* Titre de la section */
 .section-title {
   font-size: 2.3rem;
   color: #00e0ff;
@@ -19,6 +21,7 @@
   text-align: left;
 }
 
+/* Conteneur des artistes */
 .artistes-container {
   display: flex;
   justify-content: center;
@@ -27,10 +30,13 @@
   text-align: center;
 }
 
+/* Carte artiste */
 .artiste-card {
   max-width: 280px;
+  padding: 10px;
 }
 
+/* Photo artiste */
 .artiste-photo {
   width: 200px;
   height: 200px;
@@ -39,7 +45,7 @@
   margin-bottom: 10px;
 }
 
-/* Nom de l'artiste en écriture décorative */
+/* Nom de l'artiste */
 .artiste-nom {
   color: #00e0ff;
   font-style: italic;
@@ -49,30 +55,74 @@
   font-size: 1.8rem;
 }
 
-/* Rôles et titres */
+/* Titre, rôles */
 .artiste-titre,
 .artiste-roles li {
-  font-family: 'Montserrat', cursive;
+  font-family: 'Montserrat', sans-serif;
   color: #00e0ff;
   font-size: 1rem;
   line-height: 1.9;
   text-align: center;
 }
 
+/* Liste de rôles */
 .artiste-roles {
-  font-family: 'Montserrat', cursive;
+  font-family: 'Montserrat', sans-serif;
   color: #00e0ff;
   font-size: 0.8rem;
   line-height: 1.5;
   text-align: center;
+  padding: 0;
+  list-style: none;
 }
 
-/* Description lisible mais décorative */
+/* Description */
 .artiste-role,
 .artiste-desc {
-  font-family: 'Montserrat', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
   line-height: 1.5;
   margin: 8px 0;
   text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .artistes-section {
+    padding: 40px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artistes-section {
+    padding: 30px 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .artiste-photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .artiste-nom {
+    font-size: 1.5rem;
+  }
+
+  .artiste-titre,
+  .artiste-roles li {
+    font-size: 0.95rem;
+  }
+
+  .artiste-roles {
+    font-size: 0.75rem;
+  }
+
+  .artiste-role,
+  .artiste-desc {
+    font-size: 0.75rem;
+  }
 }

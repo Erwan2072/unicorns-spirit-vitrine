@@ -11,41 +11,39 @@ body {
 /* --- Header --- */
 .header-container {
   display: flex;
-  align-items: flex-start; /* aligne le haut du logo et du bloc centre */
-  justify-content: flex-start; /* aligne tout à gauche */
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 40px;
-  padding: 20px 450px; /* ajout de padding horizontal */
+  padding: 20px 450px;
+  flex-wrap: wrap;
 }
 
-/* Image logo */
 .logo-img {
-  height: 160px; /* agrandit le logo */
+  height: 160px;
   width: auto;
 }
 
-/* Bloc central contenant le titre + menu */
 .header-center {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* aligne le titre et le menu à gauche */
+  align-items: flex-start;
 }
 
-/* Titre principal */
 .logo {
-  font-size: 2.3em; /* taille du titre */
-  font-weight: 400; /* moins épais */
+  font-size: 2.3em;
+  font-weight: 400;
   margin: 0 0 30px 0;
   color: #fff;
-  font-family: 'Niconne', cursive; /* style calligraphié élégant */
+  font-family: 'Niconne', cursive;
 }
 
-/* Navigation */
 .header-nav .nav-links {
   display: flex;
   gap: 60px;
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 
 .header-nav .nav-links a {
@@ -64,9 +62,48 @@ body {
   color: rgb(211, 6, 247);
 }
 
+/* Bouton */
+.btn {
+  background-color: #00ffff;
+  color: rgb(211, 6, 247);
+  font-weight: bold;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: auto;
+  margin-top: 5px;
+  white-space: nowrap;
+  width: 130px;
+  text-align: center;
+  display: inline-block;
+}
 
+.btn:hover {
+  background-color: #00cccc;
+}
 
+/* Image agenda */
+.agenda-image {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: 20px auto;
+}
 
+.agenda-image img {
+  max-width: 90%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 2px solid #00ffff;
+}
+
+/* Footer */
 footer {
   background-color: #111;
   color: white;
@@ -79,10 +116,11 @@ footer {
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  justify-content: center; /* centre le texte */
+  justify-content: center;
   align-items: center;
   position: relative;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .footer-container p {
@@ -108,8 +146,30 @@ footer {
   color: white;
 }
 
-
 /* --- Responsive --- */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 20px 40px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-center {
+    align-items: center;
+  }
+
+  .header-nav .nav-links {
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .agenda-image {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .header-container {
     padding: 10px;
@@ -117,10 +177,12 @@ footer {
 
   .logo {
     font-size: 36px;
+    text-align: center;
   }
 
   .nav-links {
     flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
@@ -143,7 +205,19 @@ footer {
     gap: 10px;
   }
 
-  .footer-socials {
+  .footer-media {
+    position: static;
+    justify-content: center;
     margin-top: 10px;
+  }
+
+  .agenda-image img {
+    max-height: 300px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
   }
 }
