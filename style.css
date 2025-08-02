@@ -36,7 +36,7 @@ body {
   font-weight: 400; /* moins épais */
   margin: 0 0 30px 0;
   color: #fff;
-  font-family: 'Pacifico', cursive; /* style calligraphié élégant */
+  font-family: 'Niconne', cursive; /* style calligraphié élégant */
 }
 
 /* Navigation */
@@ -53,7 +53,7 @@ body {
   color: #00ffff;
   font-size: 1.6em;
   transition: color 0.3s;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Niconne', cursive;
 }
 
 .header-nav .nav-links a:hover {
@@ -65,63 +65,11 @@ body {
 }
 
 
-/* --- Section À propos --- */
-.about {
-  background-color: #000;
-  padding: 10px 20px 60px;
-  color: #00ffff;
-  font-family: 'Niconne', cursive;
-}
 
-.about-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse; /* pour que l'image soit à droite */
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-}
-
-.about-text {
-  flex: 1 1 400px;
-  font-size: 1.5rem;
-  line-height: 1.8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centre verticalement */
-  align-items: center;     /* centre horizontalement */
-  text-align: center;      /* pour centrer tout le texte */
-}
-
-.about-image {
-  flex: 1 1 400px;
-  display: flex;
-  justify-content: center;
-}
-
-.about-image img {
-  width: 540px;
-  height: 380px;
-  border-radius: 50%;
-  border: 3px solid #00ffff;
-  object-fit: cover;
-}
-
-
-/* Texte du dessous centré */
-.about-bottom-text {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 0 0px;
-}
 
 footer {
   background-color: #111;
-  color: #00ffff;
+  color: white;
   padding: 0px 40px;
   font-family: 'Niconne', cursive;
   position: relative;
@@ -151,13 +99,13 @@ footer {
 }
 
 .footer-media a {
-  color: #00ffff;
+  color: white;
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .footer-media a:hover {
-  color: #ff00ff;
+  color: white;
 }
 
 

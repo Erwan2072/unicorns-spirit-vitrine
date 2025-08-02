@@ -1,0 +1,78 @@
+/* Import de la bonne police Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.artistes-section {
+  padding: 40px 450px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: 'Montserrat', cursive !important;
+}
+
+.section-title {
+  font-size: 2.3rem;
+  color: #00e0ff;
+  border-bottom: 3px solid #00e0ff;
+  display: inline-block;
+  margin-bottom: 40px;
+  font-family: 'Niconne', cursive;
+  text-align: left;
+}
+
+.artistes-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+
+.artiste-card {
+  max-width: 280px;
+}
+
+.artiste-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Nom de l'artiste en écriture décorative */
+.artiste-nom {
+  color: #00e0ff;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 10px;
+  font-family: 'Niconne', cursive;
+  font-size: 1.8rem;
+}
+
+/* Rôles et titres */
+.artiste-titre,
+.artiste-roles li {
+  font-family: 'Montserrat', cursive;
+  color: #00e0ff;
+  font-size: 1rem;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.artiste-roles {
+  font-family: 'Montserrat', cursive;
+  color: #00e0ff;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Description lisible mais décorative */
+.artiste-role,
+.artiste-desc {
+  font-family: 'Montserrat', cursive;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 8px 0;
+  text-align: center;
+}

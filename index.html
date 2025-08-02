@@ -22,7 +22,8 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
   <!-- Feuille de style -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="artiste.css">
 
   <!-- Import police Niconne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,10 +36,10 @@
 
   <!-- Style global avec Niconne -->
   <style>
-    * {
-      font-family: 'Niconne', cursive !important;
-    }
-  </style>
+  header, .header-container, .logo, .header-nav, .nav-links, .nav-links a {
+    font-family: 'Niconne', cursive;
+  }
+</style>
 </head>
 <body>
 
@@ -50,52 +51,21 @@
         <h1 class="logo">Cie Unicorn's Spirit</h1>
         <nav class="header-nav" aria-label="Menu principal">
           <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#artists">Artistes</a></li>
-            <li><a href="#shows">Spectacles</a></li>
-            <li><a href="#gallery">Photos & Vidéos</a></li>
-            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="pages/accueil.html" data-page="accueil.html">Accueil</a></li>
+            <li><a href="pages/artistes.html" data-page="artistes.html">Artistes</a></li>
+            <li><a href="pages/spectacles.html" data-page="spectacles.html">Spectacles</a></li>
+            <li><a href="pages/photos_videos.html" data-page="photos_videos.html">Photos & Vidéos</a></li>
+            <li><a href="pages/agenda.html" data-page="agenda.html">Agenda</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- Section À propos -->
-  <section id="about" class="about" role="region" aria-label="À propos de la compagnie">
-    <div class="about-container">
-      <div class="about-image">
-        <img src="images/présentation.png" alt="Photo de l'équipe Unicorn's Spirit" loading="lazy" />
-      </div>
-      <div class="about-text">
-        <p>Vous aimez le monde Médiéval et Fantastique ?</p>
-        <p>Alors notre compagnie est faite pour vous.</p>
-        <p>
-          Nous travaillons avec un public très large comme les écoles, centres de loisirs,
-          municipalités, ehpad, associations, particuliers et bien d'autres encore !
-        </p>
-      </div>
-    </div>
-
-    <!-- Texte centré en dessous -->
-    <div class="about-bottom-text">
-      <p>
-        Professionnels depuis fin 2015, nous gardons des tarifs plus qu’accessibles pour
-        qu’un maximum de
-      </p>
-      <p>
-        personnes puisse profiter de nos animations et spectacles que
-        nous décrivons comme
-      </p>
-      <p>
-        Médiévaux - Féériques.
-      </p>
-      <p>
-        Et oui il y a toujours un chevalier, une elfe ou un lutin qui traînent ici ou là,
-        sans oublier notre belle ménagerie d’êtres magiques !
-      </p>
-    </div>
-  </section>
+  <!-- Main content chargé dynamiquement -->
+  <main id="main-content" role="main" aria-live="polite">
+    <!-- Le contenu des pages sera injecté ici -->
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -116,6 +86,7 @@
 </footer>
 
     <script src="js/nav-highlight.js"></script>
+    <script src="js/router.js"></script>
 
 </body>
 </html>
