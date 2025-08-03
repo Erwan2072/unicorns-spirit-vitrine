@@ -98,7 +98,6 @@ const slidesData = {
   ],
   antika: [
     "images/antika/antika.jpg",
-    "images/antika/1.jpg",
     "images/antika/2.jpg",
     "images/antika/3.jpg",
     "images/antika/4.jpg",
