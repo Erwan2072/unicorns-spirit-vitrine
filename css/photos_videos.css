@@ -8,7 +8,6 @@
   padding: 20px;
   color: white;
   font-family: 'Montserrat', sans-serif;
-  position: relative;
 }
 
 .tabs {
@@ -50,55 +49,43 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.carousel-wrapper {
+/* === SLIDER === */
+.slider-container {
   position: relative;
-  overflow: hidden;
+  text-align: center;
   margin-bottom: 20px;
-}
-
-.carousel {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
   max-width: 100%;
-  position: relative;
+  overflow: hidden;
 }
 
-.carousel img {
-  height: 300px;
+.slide {
+  max-width: 100%;
+  max-height: 70vh;
   width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 10px;
-  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-  opacity: 0.3;
-  filter: blur(2px);
-  flex-shrink: 0;
-  transform: scale(0.8);
-  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
-/* Image centrale mise en avant */
-.carousel img.active {
-  transform: scale(1.2);
-  opacity: 1;
-  filter: none;
-  z-index: 2;
+/* Portrait images */
+@media (orientation: portrait) {
+  .slide {
+    max-height: 60vh;
+  }
 }
 
-/* Supprime complètement cet effet si tu ne veux plus de hover : */
-.carousel img:hover {
-  transform: none;
-  opacity: inherit;
-  filter: inherit;
-}
-
-/* Boutons de navigation */
+/* === NAVIGATION === */
 .prev,
 .next {
   position: absolute;
@@ -108,10 +95,10 @@
   border: none;
   border-radius: 50%;
   font-size: 24px;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
-  z-index: 5;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,16 +118,64 @@
   right: 10px;
 }
 
-/* Vidéos */
+/* === VIDÉOS === */
 .videos {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 20px;
 }
 
 .videos iframe {
-  max-width: 100%;
-  width: 560px;
+  width: 100%;
+  max-width: 560px;
   height: 315px;
   border-radius: 10px;
+  aspect-ratio: 16 / 9;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 1024px) {
+  .slide {
+    max-height: 60vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slide {
+    max-height: 50vh;
+  }
+
+  .videos iframe {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab {
+    width: 100%;
+    text-align: center;
+  }
+
+  .slide {
+    max-height: 40vh;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .slide {
+    max-height: 35vh;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slide {
+    max-height: 30vh;
+  }
 }

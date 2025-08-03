@@ -1,121 +1,178 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const tabs = document.querySelectorAll('.tab');
-  const contents = document.querySelectorAll('.gallery-content');
-  const carousels = document.querySelectorAll('.carousel');
+const slidesData = {
+  effereyn: [
+    "../images/effereyn/photo_10.jpg",
+    "../images/effereyn/photo_11.jpg",
+    "../images/effereyn/photo_12.jpg",
+    "../images/effereyn/photo_13.jpg",
+    "../images/effereyn/1.jpg",
+    "../images/effereyn/2.jpg",
+    "../images/effereyn/3.jpg",
+    "../images/effereyn/4.jpg",
+    "../images/effereyn/5.jpg",
+    "../images/effereyn/6.jpg",
+    "../images/effereyn/7.jpg",
+    "../images/effereyn/8.jpg",
+    "../images/effereyn/9.jpg",
+    "../images/effereyn/10.jpg",
+    "../images/effereyn/11.jpg",
+    "../images/effereyn/12.jpg",
+    "../images/effereyn/13.jpg",
+    "../images/effereyn/14.jpg",
+    "../images/effereyn/15.jpg",
+    "../images/effereyn/16.jpg",
+    "../images/effereyn/17.jpg",
+    "../images/effereyn/18.jpg",
+    "../images/effereyn/19.jpg",
+    "../images/effereyn/20.jpg",
+    "../images/effereyn/21.jpg",
+    "../images/effereyn/22.jpg",
+    "../images/effereyn/23.jpg",
+    "../images/effereyn/24.jpg",
+    "../images/effereyn/25.jpg",
+    "../images/effereyn/26.jpg",
+    "../images/effereyn/27.jpg",
+    "../images/effereyn/28.jpg",
+    "../images/effereyn/29.jpg",
+    "../images/effereyn/30.jpg",
+    "../images/effereyn/31.jpg",
+    "../images/effereyn/32.jpg",
+    "../images/effereyn/33.jpg",
+    "../images/effereyn/34.jpg",
+    "../images/effereyn/35.jpg",
+    "../images/effereyn/36.jpg",
+    "../images/effereyn/37.jpg",
+    "../images/effereyn/38.jpg",
+    "../images/effereyn/39.jpg",
+    "../images/effereyn/40.jpg",
+    "../images/effereyn/41.jpg",
+    "../images/effereyn/42.jpg",
+    "../images/effereyn/43.jpg",
+    "../images/effereyn/44.jpg",
+    "../images/effereyn/45.jpg",
+    "../images/effereyn/46.jpg",
+    "../images/effereyn/47.jpg",
+    "../images/effereyn/48.jpg",
+    "../images/effereyn/49.jpg",
+    "../images/effereyn/50.jpg",
+    "../images/effereyn/51.jpg",
+    "../images/effereyn/52.jpg",
+    "../images/effereyn/53.jpg",
+    "../images/effereyn/54.jpg",
+    "../images/effereyn/55.jpg",
+    "../images/effereyn/56.jpg",
+    "../images/effereyn/57.jpg",
+    "../images/effereyn/58.jpg",
+    "../images/effereyn/59.jpg",
+  ],
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
+  foret: [
+    "../images/foret/foret.jpg",
+    "../images/foret/1.jpg",
+    "../images/foret/2.jpg",
+    "../images/foret/3.jpg",
+    "../images/foret/4.jpg",
+    "../images/foret/5.jpg",
+    "../images/foret/6.jpg",
+    "../images/foret/7.jpg",
+    "../images/foret/8.jpg",
+    "../images/foret/9.jpg",
+    "../images/foret/10.jpg",
+    "../images/foret/11.jpg",
+    "../images/foret/12.jpg",
+    "../images/foret/13.jpg",
+    "../images/foret/14.jpg",
+    "../images/foret/15.jpg",
+    "../images/foret/16.jpg",
+    "../images/foret/17.jpg",
+    "../images/foret/18.jpg",
+    "../images/foret/19.jpg",
+    "../images/foret/20.jpg",
+    "../images/foret/21.jpg",
+    "../images/foret/22.jpg",
+    "../images/foret/23.jpg",
+    "../images/foret/24.jpg",
+    "../images/foret/25.jpg",
+  ],
+  merendil: [
+    "../images/merendil/merendil.jpg",
+  ],
+  antika: [
+    "../images/antika/antika.jpg",
+    "../images/antika/1.jpg",
+    "../images/antika/2.jpg",
+    "../images/antika/3.jpg",
+    "../images/antika/4.jpg",
+    "../images/antika/5.jpg",
+    "../images/antika/6.jpg",
+  ],
+  alinor: [
+    "../images/alinor/alinor.jpg",
+  ]
+};
 
-      tab.classList.add('active');
-      const targetId = tab.getAttribute('data-target');
-      const targetContent = document.getElementById(targetId);
-      if (targetContent) {
-        targetContent.classList.add('active');
-        const carousel = targetContent.querySelector('.carousel');
-        if (carousel) {
-          setupCarousel(carousel);
-        }
-      }
-    });
+const currentIndex = {};
+let autoSlideIntervals = {};
+
+// Initialise les galeries
+Object.keys(slidesData).forEach((galleryId) => {
+  currentIndex[galleryId] = 0;
+  updateSlide(galleryId);
+  startAutoSlide(galleryId);
+});
+
+// Met à jour l’image affichée
+function updateSlide(galleryId) {
+  const img = document.getElementById(`slide-${galleryId}`);
+  if (!img) return;
+  img.src = slidesData[galleryId][currentIndex[galleryId]];
+}
+
+// Change d’image manuellement
+function changeSlide(galleryId, direction) {
+  const slides = slidesData[galleryId];
+  if (!slides) return;
+
+  currentIndex[galleryId] =
+    (currentIndex[galleryId] + direction + slides.length) % slides.length;
+
+  updateSlide(galleryId);
+
+  clearInterval(autoSlideIntervals[galleryId]);
+  startAutoSlide(galleryId);
+}
+
+// Lance le défilement automatique
+function startAutoSlide(galleryId) {
+  autoSlideIntervals[galleryId] = setInterval(() => {
+    changeSlide(galleryId, 1);
+  }, 4000);
+}
+
+// Gestion des onglets (changement de galerie)
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", function () {
+    // Désactive tous les onglets
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    this.classList.add("active");
+
+    // Masque toutes les galeries
+    document.querySelectorAll(".gallery-content").forEach((gallery) =>
+      gallery.classList.remove("active")
+    );
+
+    // Affiche la galerie cliquée
+    const targetId = this.dataset.target;
+    const targetGallery = document.getElementById(targetId);
+    if (targetGallery) {
+      targetGallery.classList.add("active");
+
+      // Remet la première image
+      currentIndex[targetId] = 0;
+      updateSlide(targetId);
+
+      // Redémarre le slideshow
+      clearInterval(autoSlideIntervals[targetId]);
+      startAutoSlide(targetId);
+    }
   });
-
-  function updateActiveImage(carousel) {
-    if (!carousel) return;
-    const images = carousel.querySelectorAll('img');
-    const carouselRect = carousel.getBoundingClientRect();
-    const center = carouselRect.left + carouselRect.width / 2;
-
-    let closestImg = null;
-    let closestDistance = Infinity;
-
-    images.forEach(img => {
-      const rect = img.getBoundingClientRect();
-      const imgCenter = rect.left + rect.width / 2;
-      const distance = Math.abs(center - imgCenter);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestImg = img;
-      }
-    });
-
-    images.forEach(img => img.classList.remove('active'));
-    if (closestImg) closestImg.classList.add('active');
-  }
-
-  function setupCarousel(carousel) {
-    const wrapper = carousel.closest('.carousel-wrapper');
-    const prevBtn = wrapper.querySelector('.prev');
-    const nextBtn = wrapper.querySelector('.next');
-    const images = carousel.querySelectorAll('img');
-    let currentIndex = 0;
-    let autoScroll;
-
-    const scrollToImage = (index) => {
-      if (!images[index]) return;
-      currentIndex = index;
-      carousel.scrollTo({
-        left: images[index].offsetLeft - carousel.offsetWidth / 2 + images[index].offsetWidth / 2,
-        behavior: 'smooth'
-      });
-      setTimeout(() => updateActiveImage(carousel), 300); // délai pour attendre le scroll
-    };
-
-    const nextImage = () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      scrollToImage(currentIndex);
-    };
-
-    const prevImage = () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      scrollToImage(currentIndex);
-    };
-
-    const startAutoScroll = () => {
-      stopAutoScroll();
-      autoScroll = setInterval(nextImage, 3000);
-    };
-
-    const stopAutoScroll = () => {
-      clearInterval(autoScroll);
-    };
-
-    carousel.addEventListener('scroll', () => {
-      setTimeout(() => updateActiveImage(carousel), 100);
-    });
-
-    carousel.addEventListener('mouseenter', stopAutoScroll);
-    carousel.addEventListener('mouseleave', startAutoScroll);
-
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        prevImage();
-      });
-
-      nextBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        nextImage();
-      });
-    }
-
-    // Initialisation
-    scrollToImage(currentIndex);
-    startAutoScroll();
-  }
-
-  // Initialisation de tous les carrousels visibles
-  carousels.forEach(setupCarousel);
-
-  // Si un onglet actif par défaut est présent
-  const defaultTab = document.querySelector('.tab.active');
-  if (defaultTab) {
-    const defaultId = defaultTab.getAttribute('data-target');
-    const defaultContent = document.getElementById(defaultId);
-    const defaultCarousel = defaultContent?.querySelector('.carousel');
-    if (defaultCarousel) {
-      setupCarousel(defaultCarousel);
-    }
-  }
 });

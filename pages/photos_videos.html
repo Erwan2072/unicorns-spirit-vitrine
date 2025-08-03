@@ -1,70 +1,90 @@
 <section class="galerie">
+  <!-- Onglets de navigation -->
   <div class="tabs">
-    <button class="tab active" data-target="foret">La forêt des Légendes</button>
+    <button class="tab active" data-target="effereyn">Le Château d'Effereyn</button>
+    <button class="tab" data-target="foret">La forêt des Légendes</button>
     <button class="tab" data-target="merendil">L'aventure de Mérendil</button>
     <button class="tab" data-target="antika">Le destin d'Antika</button>
     <button class="tab" data-target="alinor">La princesse Alinor</button>
   </div>
 
-  <div class="gallery-content active" id="foret">
-    <div class="carousel-wrapper">
-      <button class="prev">&#10094;</button>
-      <div class="carousel auto-carousel" data-gallery="foret">
-        <img src="../images/photo_10.jpg" alt="Photo 10">
-        <img src="../images/photo_11.jpg" alt="Photo 11">
-        <img src="../images/photo_12.jpg" alt="Photo 12">
-        <img src="../images/photo_13.jpg" alt="Photo 13">
-        <img src="../images/photo_14.jpg" alt="Photo 14">
+  <!-- Galerie effereyn -->
+  <div class="gallery-content active" id="effereyn">
+    <div class="slider-container">
+      <img src="../images/effereyn/photo_10.jpg" alt="Photo effereyn" class="slide" id="slide-effereyn" />
+      <div class="slider-buttons">
+        <div class="prev" onclick="changeSlide('effereyn', -1)">&#10094;</div>
+        <div class="next" onclick="changeSlide('effereyn', 1)">&#10095;</div>
       </div>
-      <button class="next">&#10095;</button>
     </div>
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/VID1" frameborder="0" allowfullscreen></iframe>
+      <video controls width="600">
+        <source src="../video/Teaser_le_Chateau_d_Effereyn.mp4" type="video/mp4" />
+        Votre navigateur ne prend pas en charge la vidéo.
+      </video>
     </div>
   </div>
 
+  <!-- Galerie Forêt -->
+  <div class="gallery-content" id="foret">
+    <div class="slider-container">
+      <img src="../images/foret/foret.jpg" alt="Photo forêt" class="slide" id="slide-foret" />
+      <div class="slider-buttons">
+        <div class="prev" onclick="changeSlide('foret', -1)">&#10094;</div>
+        <div class="next" onclick="changeSlide('foret', 1)">&#10095;</div>
+      </div>
+    </div>
+    <div class="videos">
+      <video controls width="600">
+        <source src="../video/teaser_foret.mp4" type="video/mp4" />
+        Votre navigateur ne prend pas en charge la vidéo.
+      </video>
+    </div>
+  </div>
+
+  <!-- Galerie Mérendil -->
   <div class="gallery-content" id="merendil">
-    <div class="carousel-wrapper">
-      <button class="prev">&#10094;</button>
-      <div class="carousel auto-carousel" data-gallery="merendil">
-        <img src="images/merendil1.jpg" alt="Photo 1">
-        <img src="images/merendil2.jpg" alt="Photo 2">
+    <div class="slider-container">
+      <img src="../images/merendil/merendil.jpg" alt="Photo Mérendil" class="slide" id="slide-merendil" />
+      <div class="slider-buttons">
+        <div class="prev" onclick="changeSlide('merendil', -1)">&#10094;</div>
+        <div class="next" onclick="changeSlide('merendil', 1)">&#10095;</div>
       </div>
-      <button class="next">&#10095;</button>
     </div>
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/VID2" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VID2" title="Vidéo Mérendil" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
+  <!-- Galerie Antika -->
   <div class="gallery-content" id="antika">
-    <div class="carousel-wrapper">
-      <button class="prev">&#10094;</button>
-      <div class="carousel auto-carousel" data-gallery="antika">
-        <img src="images/antika1.jpg" alt="Photo 3">
-        <img src="images/antika2.jpg" alt="Photo 4">
+    <div class="slider-container">
+      <img src="../images/antika/antika.jpg" alt="Photo Antika" class="slide" id="slide-antika" />
+      <div class="slider-buttons">
+        <div class="prev" onclick="changeSlide('antika', -1)">&#10094;</div>
+        <div class="next" onclick="changeSlide('antika', 1)">&#10095;</div>
       </div>
-      <button class="next">&#10095;</button>
     </div>
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/VID3" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VID3" title="Vidéo Antika" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
+  <!-- Galerie Alinor -->
   <div class="gallery-content" id="alinor">
-    <div class="carousel-wrapper">
-      <button class="prev">&#10094;</button>
-      <div class="carousel auto-carousel" data-gallery="alinor">
-        <img src="images/alinor1.jpg" alt="Photo 5">
-        <img src="images/alinor2.jpg" alt="Photo 6">
+    <div class="slider-container">
+      <img src="../images/alinor/alinor.jpg" alt="Photo Alinor" class="slide" id="slide-alinor" />
+      <div class="slider-buttons">
+        <div class="prev" onclick="changeSlide('alinor', -1)">&#10094;</div>
+        <div class="next" onclick="changeSlide('alinor', 1)">&#10095;</div>
       </div>
-      <button class="next">&#10095;</button>
     </div>
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/VID4" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VID4" title="Vidéo Alinor" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </section>
 
+<!-- Liens vers CSS et JS -->
 <link rel="stylesheet" href="../css/photos_videos.css" />
-<script src="../js/galerie.js"></script>
+<script src="../js/galerie.js" defer></script>
