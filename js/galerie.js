@@ -64,7 +64,6 @@ const slidesData = {
     "images/effereyn/58.jpg",
     "images/effereyn/59.jpg",
   ],
-
   foret: [
     "images/foret/foret.jpg",
     "images/foret/1.jpg",
