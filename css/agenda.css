@@ -1,7 +1,7 @@
 /* Section principale */
 .agenda {
   padding: 10px 20px;
-  background-color: #000;
+  background-color: transparent;
   color: white;
   font-family: 'Montserrat';
 }
