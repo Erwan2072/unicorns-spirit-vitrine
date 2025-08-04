@@ -7,7 +7,7 @@ body {
   background-color: #000; /* couleur de secours si l'image ne charge pas */
   color: #00ffff;
 
-  background-image: url('/images/fond.jpg'); /* remplace ce chemin si besoin */
+  background-image: url('images/fond.jpg'); /* remplace ce chemin si besoin */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
