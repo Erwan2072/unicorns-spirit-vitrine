@@ -114,7 +114,7 @@ body {
 footer {
   background-color: #111;
   color: white;
-  padding: 0px 40px;
+  padding: 30px 40px;
   font-family: 'Niconne', cursive;
   position: relative;
 }
@@ -151,6 +151,16 @@ footer {
 
 .footer-media a:hover {
   color: white;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* --- Responsive --- */
@@ -228,5 +238,3 @@ footer {
     margin: 10px auto;
   }
 }
-
-
