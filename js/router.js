@@ -5,21 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll('a[data-page]');
 
   // Fonction pour charger une page
-  const loadPage = async (pageName, updateHistory = true) => {
+  const loadPage = async (pageName, updateHash = true) => {
     try {
       const response = await fetch(`pages/${pageName}`);
       if (!response.ok) throw new Error("Page non trouvée");
       const html = await response.text();
       main.innerHTML = html;
 
-      // Mettre à jour l'URL sans recharger la page
-      if (updateHistory) {
-        history.pushState({ page: pageName }, '', pageName.replace('.html', ''));
+      // Mettre à jour le hash dans l'URL
+      if (updateHash) {
+        window.location.hash = pageName.replace('.html', '');
       }
 
-      // Mettre à jour le menu actif
       updateActiveLink(pageName);
-
     } catch (error) {
       main.innerHTML = `<p role="alert">Erreur lors du chargement de la page.</p>`;
       console.error(error);
@@ -46,12 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Gestion du bouton "précédent / suivant" du navigateur
-  window.addEventListener("popstate", (e) => {
-    const page = e.state?.page || "accueil.html";
+  // Gestion du hash (navigation manuelle ou rechargement)
+  window.addEventListener("hashchange", () => {
+    const hash = window.location.hash.replace('#', '');
+    const page = hash ? `${hash}.html` : "accueil.html";
     loadPage(page, false);
   });
 
-  // Chargement initial : accueil.html
-  loadPage("accueil.html");
+  // Chargement initial (basé sur le hash si présent)
+  const initialHash = window.location.hash.replace('#', '');
+  const initialPage = initialHash ? `${initialHash}.html` : "accueil.html";
+  loadPage(initialPage);
 });
