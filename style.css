@@ -42,6 +42,7 @@ body {
   margin: 0 0 30px 0;
   color: #fff;
   font-family: 'Niconne', cursive;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .header-nav .nav-links {
@@ -134,6 +135,7 @@ footer {
   margin: 0 auto;
   font-size: 1.2rem;
   text-align: center;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .footer-media {
@@ -162,6 +164,18 @@ html, body {
 main {
   flex: 1;
 }
+
+/* === Accessibilité : amélioration de la lisibilité === */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+strong, .logo, .about-text, .footer-container p {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+
+
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
