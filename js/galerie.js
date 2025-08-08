@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const slidesData = {
   effereyn: [
     "images/effereyn/photo_10.jpg",
@@ -172,5 +173,9 @@ document.querySelectorAll(".tab").forEach((tab) => {
       clearInterval(autoSlideIntervals[targetId]);
       startAutoSlide(targetId);
     }
+    });
   });
+
+  // Ligne essentielle pour que le onclick du HTML fonctionne
+  window.changeSlide = changeSlide;
 });
