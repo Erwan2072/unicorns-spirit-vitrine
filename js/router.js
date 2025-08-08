@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const html = await response.text();
       main.innerHTML = html;
 
+
+    // ✅ Ré-initialiser la galerie si présente
+    if (main.querySelector(".galerie")) {
+      window.initGalerie?.(main);
+    }
+
       // Mettre à jour le hash dans l'URL
       if (updateHash) {
         window.location.hash = pageName.replace('.html', '');

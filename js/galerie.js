@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
-const slidesData = {
+(function () {
+  window.initGalerie = function initGalerie(root = document) {
+    const slidesData = {
   effereyn: [
     "images/effereyn/photo_10.jpg",
     "images/effereyn/photo_11.jpg",
@@ -109,73 +110,69 @@ const slidesData = {
   ]
 };
 
-const currentIndex = {};
-let autoSlideIntervals = {};
+    const $  = (sel) => root.querySelector(sel);
+    const $$ = (sel) => Array.from(root.querySelectorAll(sel));
 
-// Initialise les galeries
-Object.keys(slidesData).forEach((galleryId) => {
-  currentIndex[galleryId] = 0;
-  updateSlide(galleryId);
-  startAutoSlide(galleryId);
-});
+    const currentIndex = {};
+    const autoSlideIntervals = {};
 
-// Met à jour l’image affichée
-function updateSlide(galleryId) {
-  const img = document.getElementById(`slide-${galleryId}`);
-  if (!img) return;
-  img.src = slidesData[galleryId][currentIndex[galleryId]];
-}
-
-// Change d’image manuellement
-function changeSlide(galleryId, direction) {
-  const slides = slidesData[galleryId];
-  if (!slides) return;
-
-  currentIndex[galleryId] =
-    (currentIndex[galleryId] + direction + slides.length) % slides.length;
-
-  updateSlide(galleryId);
-
-  clearInterval(autoSlideIntervals[galleryId]);
-  startAutoSlide(galleryId);
-}
-
-// Lance le défilement automatique
-function startAutoSlide(galleryId) {
-  autoSlideIntervals[galleryId] = setInterval(() => {
-    changeSlide(galleryId, 1);
-  }, 4000);
-}
-
-// Gestion des onglets (changement de galerie)
-document.querySelectorAll(".tab").forEach((tab) => {
-  tab.addEventListener("click", function () {
-    // Désactive tous les onglets
-    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
-    this.classList.add("active");
-
-    // Masque toutes les galeries
-    document.querySelectorAll(".gallery-content").forEach((gallery) =>
-      gallery.classList.remove("active")
-    );
-
-    // Affiche la galerie cliquée
-    const targetId = this.dataset.target;
-    const targetGallery = document.getElementById(targetId);
-    if (targetGallery) {
-      targetGallery.classList.add("active");
-
-      // Remet la première image
-      currentIndex[targetId] = 0;
-      updateSlide(targetId);
-
-      // Redémarre le slideshow
-      clearInterval(autoSlideIntervals[targetId]);
-      startAutoSlide(targetId);
+    function updateSlide(galleryId) {
+      const slides = slidesData[galleryId];
+      const img = $(`#slide-${galleryId}`);
+      if (!slides || !img) return;
+      img.src = slides[currentIndex[galleryId]];
     }
-    });
-  });
 
-  // Ligne essentielle pour que le onclick du HTML fonctionne
-  window.changeSlide = changeSlide;
-});
+    function stopAllSlides() {
+      Object.keys(autoSlideIntervals).forEach(id => clearInterval(autoSlideIntervals[id]));
+    }
+
+    function startAutoSlide(galleryId) {
+      stopAllSlides();
+      autoSlideIntervals[galleryId] = setInterval(() => changeSlide(galleryId, 1), 4000);
+    }
+
+    function changeSlide(galleryId, direction) {
+      const slides = slidesData[galleryId];
+      if (!slides) return;
+      currentIndex[galleryId] = (currentIndex[galleryId] + direction + slides.length) % slides.length;
+      updateSlide(galleryId);
+      startAutoSlide(galleryId);
+    }
+
+    // Pour tes onclick="changeSlide(...)" dans le HTML
+    window.changeSlide = changeSlide;
+
+    // Init images
+    Object.keys(slidesData).forEach(id => { currentIndex[id] = 0; updateSlide(id); });
+
+    // Démarrer l'auto-slide sur la galerie active (ou la 1re si aucune)
+    let active = $(".gallery-content.active") || $(".gallery-content");
+    if (active) {
+      active.classList.add("active");
+      slidesData[active.id] && startAutoSlide(active.id);
+    }
+
+    // Onglets
+    const tabs = $$(".tab");
+    tabs.forEach(tab => {
+      tab.type = "button";
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        $$(".gallery-content").forEach(g => g.classList.remove("active"));
+        const id = tab.dataset.target;
+        const target = $(`#${id}`);
+        if (!target || !slidesData[id]) return;
+
+        target.classList.add("active");
+        currentIndex[id] = 0;
+        updateSlide(id);
+        startAutoSlide(id);
+      });
+    });
+  };
+})();
