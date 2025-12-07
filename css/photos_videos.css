@@ -16,7 +16,8 @@
   gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  /* z-index: 1; */
+  position: relative; /* indispensable pour que z-index fonctionne */
+  z-index: 20; /* assez élevé pour passer devant les autres */
 }
 
 .tab {
@@ -28,11 +29,6 @@
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
-}
-
-.tabs {
-  position: relative; /* indispensable pour que z-index fonctionne */
-  z-index: 20; /* assez élevé pour passer devant les autres */
 }
 
 .tab:hover {
@@ -71,9 +67,8 @@
   text-align: center;
   margin-bottom: 20px;
   max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 10; /* Moins que les onglets */
+  overflow: visible;
+  z-index: 1; /* plus bas que les flèches */
 }
 
 .slide {
@@ -86,17 +81,30 @@
   transition: opacity 0.3s ease;
 }
 
+/* Correction pour afficher les flèches aux extrémités */
 .slider-buttons {
   position: absolute;
   top: 50%;
+  left: 0;
+  right: 0;
   transform: translateY(-50%);
-  z-index: 15; /* Les flèches au-dessus de l'image mais sous les onglets */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  z-index: 2000; /* plus haut que tout */
+  pointer-events: none; /* évite que le container bloque les clics */
+}
+
+.slider-buttons .prev,
+.slider-buttons .next {
+  position: static; /* géré par flexbox */
+  pointer-events: auto; /* clics actifs */
 }
 
 .tabs button {
   pointer-events: auto;
 }
-
 
 /* Portrait images */
 @media (orientation: portrait) {
@@ -108,9 +116,6 @@
 /* === NAVIGATION === */
 .prev,
 .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background-color: rgba(255,255,255,0.8);
   border: none;
   border-radius: 50%;
@@ -118,7 +123,7 @@
   width: 44px;
   height: 44px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3000; /* priorité max */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,12 +135,9 @@
   background-color: #fff;
 }
 
-.prev {
-  left: 10px;
-}
-
 .next {
-  right: 10px;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* === VIDÉOS === */

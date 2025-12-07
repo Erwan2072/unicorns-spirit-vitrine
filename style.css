@@ -7,7 +7,7 @@ body {
   background-color: #000; /* couleur de secours si l'image ne charge pas */
   color: #00ffff;
 
-  background-image: url('images/fond.png');
+  background-image: url('images/fond.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
