@@ -101,14 +101,14 @@
   display: flex;
   justify-content: center;
   align-items: stretch; /* Prend toute la hauteur dispo */
-  max-width: 500px;
+  max-width: 800px;
   height: auto;
 }
 
 .agenda-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 20px; /* Rectangulaire avec coins arrondis */
   border: 2px solid #00ffff;
 }
