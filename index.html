@@ -11,12 +11,25 @@
   <meta name="author" content="Cie Unicorn's Spirit">
   <meta name="robots" content="index, follow">
 
+  <!-- Canonical (à utiliser quand ton domaine sera actif) -->
+  <!-- Quand le domaine sera 100% fonctionnel, garde cette URL. 
+       Pour l'instant tu peux la laisser, ça prépare déjà le SEO. -->
+  <link rel="canonical" href="https://www.unicorns-spirit.fr/">
+
   <!-- Open Graph pour réseaux sociaux -->
-  <meta property="og:title" content="Cie Unicorn's Spirit">
+  <meta property="og:title" content="Cie Unicorn's Spirit - Compagnie de spectacle médiéval et féerique">
   <meta property="og:description" content="Animations et spectacles féériques pour petits et grands.">
-  <meta property="og:image" content="images/Unicorns_Spirit.png">
+  <meta property="og:image" content="https://www.unicorns-spirit.fr/images/Unicorns_Spirit.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://www.unicorns-spirit.fr/">
+  <meta property="og:site_name" content="Cie Unicorn's Spirit">
+
+  <!-- Twitter Card (optionnel mais bon pour le partage) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cie Unicorn's Spirit - Compagnie de spectacle médiéval et féerique">
+  <meta name="twitter:description" content="Animations et spectacles féériques pour petits et grands.">
+  <meta name="twitter:image" content="https://www.unicorns-spirit.fr/images/Unicorns_Spirit.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
@@ -32,15 +45,120 @@
   <!-- FontAwesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-
-  <!-- Style global avec Niconne -->
+  <!-- Style global avec Niconne + styles du popup -->
   <style>
-  header, .header-container, .logo, .header-nav, .nav-links, .nav-links a {
-    font-family: 'Niconne', cursive;
-  }
-</style>
+    header, .header-container, .logo, .header-nav, .nav-links, .nav-links a {
+      font-family: 'Niconne', cursive;
+    }
+
+    /* ===== POPUP SPECTACLE ===== */
+
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;              /* caché par défaut */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90%;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .popup-content h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .popup-video iframe {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .popup-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-reserver,
+    .btn-acces {
+      padding: 10px 18px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn-reserver {
+      background: #e91e63;
+      color: #fff;
+    }
+
+    .btn-acces {
+      background: #00bcd4;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Popup Spectacle Unicorn's Spirit -->
+  <div id="spectacle-popup" class="popup-overlay" aria-modal="true" role="dialog">
+    <div class="popup-content">
+      <button class="popup-close" id="close-popup" aria-label="Fermer la fenêtre">X</button>
+
+      <h2>Nouveau spectacle : Faëlendil et les Esprits de la Forêt</h2>
+
+      <div class="popup-video">
+        <iframe
+          id="popup-video-iframe"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/ybUg1yJLBA8?autoplay=1&rel=0"
+          title="Teaser Faëlendil et les Esprits de la Forêt"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="popup-buttons">
+        <!-- Remplace ce lien par ton vrai lien HelloAsso -->
+        <a href="https://www.helloasso.com/" target="_blank" class="btn-reserver" rel="noopener">
+          Réserver sur HelloAsso
+        </a>
+        <button id="access-site" class="btn-acces">
+          Accéder au site
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Header -->
   <header>
@@ -53,7 +171,7 @@
             <li><a href="#accueil" data-page="accueil.html">Accueil</a></li>
             <li><a href="#artistes" data-page="artistes.html">Artistes</a></li>
             <li><a href="#spectacles" data-page="spectacles.html">Spectacles</a></li>
-            <li><a href="#photos_videos" data-page="photos_videos.html">Photos & Vidéos</a></li>
+            <li><a href="#photos_videos" data-page="photos_videos.html">Photos &amp; Vidéos</a></li>
             <li><a href="#agenda" data-page="agenda.html">Agenda</a></li>
           </ul>
         </nav>
@@ -68,25 +186,51 @@
 
   <!-- Footer -->
   <footer>
-  <div class="footer-container">
-    <p>&copy; 2025 Cie Unicorn's Spirit. Tous droits réservés.</p>
-    <div class="footer-media">
-      <a href="https://www.facebook.com/unicornsspirit" target="_blank" aria-label="Facebook">
-        <img src="images/facebook.svg" alt="Facebook" class="social-icon">
-      </a>
-      <a href="https://www.youtube.com/watch?v=pfIMEZVjsNk" target="_blank" aria-label="YouTube">
-        <img src="images/youtube.svg" alt="YouTube" class="social-icon">
-      </a>
-      <a href="https://www.instagram.com/compagnie.unicorns.spirit" target="_blank" aria-label="Instagram">
-        <img src="images/instagram.svg" alt="Instagram" class="social-icon">
-      </a>
+    <div class="footer-container">
+      <p>&copy; 2025 Cie Unicorn's Spirit. Tous droits réservés.</p>
+      <div class="footer-media">
+        <a href="https://www.facebook.com/unicornsspirit" target="_blank" aria-label="Facebook" rel="noopener">
+          <img src="images/facebook.svg" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.youtube.com/watch?v=pfIMEZVjsNk" target="_blank" aria-label="YouTube" rel="noopener">
+          <img src="images/youtube.svg" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/compagnie.unicorns.spirit" target="_blank" aria-label="Instagram" rel="noopener">
+          <img src="images/instagram.svg" alt="Instagram" class="social-icon">
+        </a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-    <script src="js/nav-highlight.js"></script>
-    <script src="js/router.js"></script>
-    <script src="js/galerie.js"></script>
+  <script src="js/nav-highlight.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/galerie.js"></script>
 
+  <!-- Script du popup (affiché une seule fois par visiteur) -->
+  <script>
+    window.addEventListener('load', function () {
+      const popup = document.getElementById('spectacle-popup');
+      const closeBtn = document.getElementById('close-popup');
+      const accessBtn = document.getElementById('access-site');
+
+      // Si tu veux le montrer à chaque fois, enlève toute la partie localStorage
+      const alreadyShown = localStorage.getItem('us_popup_shown') === 'yes';
+      if (!alreadyShown) {
+        popup.style.display = 'flex';
+      }
+
+      function closePopup() {
+        popup.style.display = 'none';
+        // Stoppe la vidéo
+        const iframe = document.getElementById('popup-video-iframe');
+        iframe.src = iframe.src;
+        // Marquer comme déjà vu
+        localStorage.setItem('us_popup_shown', 'yes');
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closePopup);
+      if (accessBtn) accessBtn.addEventListener('click', closePopup);
+    });
+  </script>
 </body>
 </html>
