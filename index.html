@@ -65,19 +65,19 @@
       background: #111;
       padding: 32px;
       border-radius: 14px;
-      max-width: 1000px;   /* plus large */
+      max-width: 1000px;
       width: 95%;
       color: #fff;
       text-align: center;
       position: relative;
       box-shadow: 0 0 28px rgba(0, 0, 0, 0.9);
-      font-size: 1.15rem;  /* texte un peu plus grand */
+      font-size: 1.15rem;
     }
 
     .popup-content h2 {
       margin-top: 0;
       margin-bottom: 20px;
-      font-size: 2.3rem;   /* titre plus grand */
+      font-size: 2.3rem;
     }
 
     .popup-close {
@@ -87,19 +87,19 @@
       border: none;
       background: transparent;
       color: #fff;
-      font-size: 26px;     /* croix plus grande */
+      font-size: 26px;
       cursor: pointer;
     }
 
     .popup-video iframe {
       max-width: 100%;
       border-radius: 10px;
-      height: 360px;       /* un peu plus haut sur desktop */
+      height: 360px;
     }
 
     @media (max-width: 768px) {
       .popup-video iframe {
-        height: 220px;     /* plus petit sur mobile pour tenir dans l'écran */
+        height: 220px;
       }
     }
 
@@ -113,14 +113,14 @@
 
     .btn-reserver,
     .btn-acces {
-      padding: 14px 30px;        /* boutons plus gros */
+      padding: 14px 30px;
       border-radius: 8px;
       border: none;
       cursor: pointer;
       font-weight: bold;
       text-decoration: none;
       font-family: inherit;
-      font-size: 1.15rem;        /* texte des boutons plus grand */
+      font-size: 1.15rem;
     }
 
     .btn-reserver {
@@ -214,26 +214,21 @@
   <script src="js/router.js"></script>
   <script src="js/galerie.js"></script>
 
-  <!-- Script du popup (affiché une seule fois par visiteur) -->
+  <!-- Script du popup (affiché à CHAQUE chargement) -->
   <script>
     window.addEventListener('load', function () {
       const popup = document.getElementById('spectacle-popup');
       const closeBtn = document.getElementById('close-popup');
       const accessBtn = document.getElementById('access-site');
 
-      // Si tu veux le montrer à chaque fois, enlève toute la partie localStorage
-      const alreadyShown = localStorage.getItem('us_popup_shown') === 'yes';
-      if (!alreadyShown) {
-        popup.style.display = 'flex';
-      }
+      // Afficher le popup à chaque chargement de page
+      popup.style.display = 'flex';
 
       function closePopup() {
         popup.style.display = 'none';
         // Stoppe la vidéo
         const iframe = document.getElementById('popup-video-iframe');
         iframe.src = iframe.src;
-        // Marquer comme déjà vu
-        localStorage.setItem('us_popup_shown', 'yes');
       }
 
       if (closeBtn) closeBtn.addEventListener('click', closePopup);
