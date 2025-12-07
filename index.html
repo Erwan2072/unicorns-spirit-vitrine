@@ -59,6 +59,8 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      padding: 20px;              /* pour garder de l’espace sur les bords en mobile */
+      overflow-y: auto;           /* si le contenu est trop haut → scroll interne */
     }
 
     .popup-content {
@@ -66,7 +68,7 @@
       padding: 32px;
       border-radius: 14px;
       max-width: 1000px;
-      width: 95%;
+      width: 100%;
       color: #fff;
       text-align: center;
       position: relative;
@@ -93,9 +95,11 @@
     }
 
     .popup-video iframe {
+      width: 100%;
       max-width: 100%;
+      aspect-ratio: 16 / 9;   /* vidéo responsive */
       border-radius: 10px;
-      height: 360px;
+      display: block;
     }
 
     @media (max-width: 768px) {
@@ -106,10 +110,6 @@
 
       .popup-content h2 {
         font-size: 1.7rem;
-      }
-
-      .popup-video iframe {
-        height: 220px;
       }
     }
 
@@ -181,8 +181,6 @@
       <div class="popup-video">
         <iframe
           id="popup-video-iframe"
-          width="560"
-          height="315"
           src="https://www.youtube.com/embed/ybUg1yJLBA8?autoplay=1&rel=0"
           title="Teaser Faëlendil et le sortilège"
           frameborder="0"
