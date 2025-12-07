@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 
+/* Reset utile pour éviter les débordements et avoir des tailles propres */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Corps de la page */
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +22,18 @@ body {
   background-attachment: fixed;
 }
 
+/* Empêcher le scroll horizontal sur tout le site */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;   /* << important pour ton problème de scroll horizontal */
+}
+
+/* Main prend toute la hauteur dispo */
+main {
+  flex: 1;
+}
 
 /* --- Header --- */
 .header-container {
@@ -155,16 +175,6 @@ footer {
   color: white;
 }
 
-html, body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
 /* === Accessibilité : amélioration de la lisibilité === */
 body, h1, h2, h3, h4, h5, h6, p, a, li, span {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -173,9 +183,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, span {
 strong, .logo, .about-text, .footer-container p {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
-
-
-
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
