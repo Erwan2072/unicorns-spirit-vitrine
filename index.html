@@ -11,7 +11,7 @@
   <meta name="author" content="Cie Unicorn's Spirit">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical (à utiliser quand ton domaine sera actif) -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://www.unicorns-spirit.fr/">
 
   <!-- Open Graph pour réseaux sociaux -->
@@ -29,8 +29,21 @@
   <meta name="twitter:description" content="Animations et spectacles féériques pour petits et grands.">
   <meta name="twitter:image" content="https://www.unicorns-spirit.fr/images/Unicorns_Spirit.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <!-- Favicon (onglet du navigateur) -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <!-- Optionnel : icône png si tu en as une -->
+  <!-- <link rel="icon" type="image/png" href="/images/favicon.png" /> -->
+
+  <!-- Logo pour Google (Organization Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cie Unicorn's Spirit",
+    "url": "https://www.unicorns-spirit.fr",
+    "logo": "https://www.unicorns-spirit.fr/images/Unicorns_Spirit.png"
+  }
+  </script>
 
   <!-- Feuille de style -->
   <link rel="stylesheet" href="style.css" />
